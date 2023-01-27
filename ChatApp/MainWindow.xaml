@@ -1,0 +1,67 @@
+﻿<Window x:Class="ChatApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatApp"
+        mc:Ignorable="d"
+         Height="600"
+        Width="920"
+        Title="Chat App"
+        Background="LightBlue">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="DodgerBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="SendBtnStyle" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Pink"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="{x:Type ListBox}">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="UsernameTextBox" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="Username" GotFocus="UsernameTextBox_GotFocus"/>
+        <TextBox x:Name="IPTextBox" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="127.0.0.1"/>
+        <TextBox x:Name="PortTextBox" Grid.Row="0" Grid.Column="3" TextWrapping="Wrap" Text="5479"/>
+        <Button x:Name="ConnectButton" Content="Connect" Grid.Row="0" Grid.Column="4" Click="ConnectButton_Click" />
+        <TextBox x:Name="MessageTextBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" TextWrapping="Wrap" Text="Message" GotFocus="MessageTextBox_GotFocus" PreviewKeyDown="MessageTextBox_PreviewKeyDown"/>
+
+
+        <Button x:Name="SendButton" Content="Send" Grid.Row="2" Grid.Column="4"  Click="SendButton_Click" Background="#FF1E74FF" />
+        <ListBox x:Name="ChatListBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Stretch" Width="Auto"/>
+    </Grid>
+</Window>
